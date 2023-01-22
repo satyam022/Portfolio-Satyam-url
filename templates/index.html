@@ -1,0 +1,291 @@
+ {% extends 'base.html'%}
+ {% load static %}
+ {% block content %}
+
+
+
+<section>
+      <div class="bannerSection">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-auto order-md-last">
+              <div class="bannerUserImg">
+                <img src="avatar/img3.jpg" alt="...">
+              </div>
+            </div>
+            <div class="col-md">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-3">Hi, I’m Satyam , <br> a back-end Developer</h1>
+                <p>I am a BCA graduate from ganga institute of technology and management. I am a skilled full-stack developer,
+                   I am eager to join a creative, problem-solving team.
+
+                   I have ability to learn and implement new technologies quickly.
+                   I have my skills listed as (Python,Django,MySQL,C,C++,c#,HTML5, CSS3, JavaScript)</p>
+                <div class="bannerBtnCol">
+                  <div class="row">
+
+                    <div class="col-auto">
+                      <a href="cv/Satyamcv.pdf" download  class="btn btnPrimary">Download Resume</a>
+                    </div>
+                    <div class="col-auto">
+                      <a href="{% url 'contact'%}" class="btn btnOutline">Contact</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionSpace pt-0">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-auto">
+              <div class="keySkillCol">
+                <h4 class="smTitle pb-3"> Skills</h4>
+                <div class="keySkillCard">
+                  <div class="ksIconCol">
+                    <img src="{% static 'images/key-skill-icon-1.svg'%}" alt="...">
+                  </div>
+                  <span class="ksText"></span>
+                </div>
+                <div class="keySkillCard">
+                  <div class="ksIconCol">
+                    <img src="{% static 'images/key-skill-icon-2.svg'%}" alt="...">
+                  </div>
+                  <span class="ksText"></span>
+                </div>
+                <div class="keySkillCard">
+                  <div class="ksIconCol">
+                    <img src="{% static 'images/key-skill-icon-3.svg'%}" alt="...">
+                  </div>
+                  <span class="ksText"></span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md">
+              <h4 class="smTitle pb-3">Skills</h4>
+              <div class="progressCol">
+                <div class="progressCard">
+                 {% for i in skill%}
+                  <div class="progressCol">
+                    <span class="progressLbl">{{i.name}}</span>
+                    <div class="row g-2 align-items-center">
+                      <div class="col">
+                        <div class="progress progressStyle">
+                          <div class="progress-bar" role="progressbar" style="width: {{i.score}}%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                      </div>
+                      <div class="col-auto">
+                        <span class="pLbl">{{i.score}}%</span>
+                      </div>
+                    </div>
+                  </div>
+                 {% endfor %}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+ <section>
+     <div class="sectionSpaceSm lightBg">
+        <div class="container">
+          <div class="row pb-3">
+            <div class="col">
+              <h4 class="smText regular">Certificates</h4>
+            </div>
+            <div class="col-auto">
+              <a href="javascript:void(0)" class="simpleLink">View all</a>
+            </div>
+          </div>
+          <div class="sliderOuter">
+            <div class="swiper certificatesSlider">
+              <div class="swiper-wrapper">
+                 {%for i in  certificate %}
+                <div class="swiper-slide">
+                  <div class="cardStyle1">
+                   <div class="text-center">
+                   <img src="{{i.image}}" class="rounded" alt="..." style=" width:600px;height:400px;">
+                         </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="cert-swiper-button-next swiper-button-next swiperBtnStyle"></div>
+            <div class="cert-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
+            <div class="swiper-pagination swiperPaginationStyle posInitial"></div>
+          </div>
+        </div>
+      </div>
+        <section>
+            <div class="sectionSpace">
+        <div class="container">
+          <div class="portfolioCol">
+            <div class="row pb-3">
+              <div class="col">
+                <h4 class="smText regular">Project Work</h4>
+              </div>
+              <div class="col-auto">
+                <a href="{% url 'portfolio'%}" class="simpleLink">View all</a>
+              </div>
+            </div>
+            <div class="portfolioCard">
+               {% for i in  projectwork %}
+              <div class="row g-4 align-items-center">
+                <div class="col-md-auto">
+                  <div class="portfolioImgCol">
+                    <a href="javascript:void(0)"><img src="{{i.image}}" alt="..." style="width:400px;height:300px;"></a>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="portfolioContentCol">
+                    <h4 class="lgTitle"><a href="javascript:void(0)">{{i.name}}</a></h4>
+                    <ul class="portfolioOption">
+                      <li><span class="dateLbl">{{i.date}}</span></li>
+                    </ul>
+                    <p>{{i.description|safe}}</p>
+                  </div>
+                </div>
+                 {% endfor %}
+              </div>
+            </div>
+          </div>
+          <div class="testimonialCol">
+            <h4 class="smText regular d-block">Work Experience</h4>
+            <div class="testimonialSlider">
+              <div class="swiper testimonialSwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="testimonialCard">
+                      <div class="row align-items-center">
+                        <div class="col-sm-auto">
+                        <!--  <div class="tImgCol">
+                            <img src="images/user-thumb.jpg" alt="...">
+                          </div> -->
+                        </div>
+                        <div class="col-sm">
+                          {% for i in experiencework %}
+                          <div class="tContentCol">
+                            <h4 class="xsTitle bold">{{i.profilename}}</h4>
+                            <p>{{i.compuny_name}}</p>
+                            <p>{{i.date}}</p>
+                            <p> {{i.description|safe}}</p>
+                          </div>
+                          {% endfor %}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                 <div class="swiper-slide">
+                    <div class="testimonialCard">
+                      <div class="row align-items-center">
+                        <div class="col-sm-auto">
+                          <div class="tImgCol">
+                            <img src="images/user-thumb.jpg" alt="...">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="test-swiper-button-next swiper-button-next swiperBtnStyle"></div>
+                <div class="test-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionSpace">
+        <div class="container">
+          <div class="portfolioCol">
+            <div class="row pb-3">
+          <div class="testimonialCol">
+            <h4 class="smText regular d-block">Achievement</h4>
+            <div class="testimonialSlider">
+              <div class="swiper testimonialSwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <div class="testimonialCard">
+                      <div class="row align-items-center">
+                        {% for i in achievement%}
+                        <div class="col-sm-auto">
+                          <div class="tImgCol">
+                            <img src="{{i.image}}" alt="...">
+                          </div>
+                        </div>
+                        <div class="col-sm">
+                          <div class="tContentCol">
+                            <h4 class="xsTitle bold">{{i.title}}</h4>
+                            <p>{{i.details|safe}}</p>
+                          </div>
+                        </div>
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide">
+                    <div class="testimonialCard">
+                      <div class="row align-items-center">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="test-swiper-button-next swiper-button-next swiperBtnStyle"></div>
+                <div class="test-swiper-button-prev swiper-button-prev swiperBtnStyle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section>
+      <div class="sectionSpaceSm lightBg">
+        <div class="container">
+          <div class="row pb-3">
+            <div class="col">
+              <h4 class="smText regular"><a href="#">Recent posts</a></h4>
+            </div>
+            <div class="col-auto">
+              <a href="{% url 'blog_page'%}" class="simpleLink">View all</a>
+            </div>
+          </div>
+          <div class="row g-3">
+             {% for i in blogpage %}
+            <div class="col-lg-6">
+              <div class="cardStyle1">
+                <h4 class="mdTitle cs1Title"><a href="javascript:void(0)">{{i.title|safe}}</a></h4>
+                <ul class="cardOptionCol">
+                  <li>{{i.date}}|{{i.title}}</li>
+                </ul>
+                <p>{{i.content|truncatewords:50|safe}}</p>
+                  <a href="{% url 'blog_page'%}" class="btn btn-primary">Read More &rarr;</a>
+              </div>
+            </div>
+             {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ================================
+    End Content
+    ================================= -->
+
+
+ {% endblock %}

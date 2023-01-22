@@ -1,0 +1,55 @@
+{% extends 'base.html'%}
+
+{% load static %}
+{% block content%}
+
+
+    <!-- ================================
+    Start Content
+    ================================= -->
+    <section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">See my recent projects below</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+          <div class="sectionSpaceSm">
+        <div class="container">
+          <div class="portfolioCard">
+               {% for i in  projectwork %}
+              <div class="row g-4 align-items-center">
+                <div class="col-md-auto">
+                  <div class="portfolioImgCol">
+                    <a href="javascript:void(0)"><img src="{{i.image}}" alt="..." style="width:400px;height:300px;"></a>
+                  </div>
+                </div>
+                <div class="col-md">
+                  <div class="portfolioContentCol">
+                    <h4 class="lgTitle"><a href="javascript:void(0)">{{i.name}}</a></h4>
+                    <ul class="portfolioOption">
+                      <li><span class="dateLbl">{{i.date}}</span></li>
+                    </ul>
+                    <p>{{i.description|safe}}</p>
+                  </div>
+                </div>
+                 {% endfor %}
+              </div>
+            </div>
+        </div>
+          </div>
+        </div>
+    </section>
+    <!-- ================================
+    End Content
+    ================================= -->
+    
+   {% endblock %}

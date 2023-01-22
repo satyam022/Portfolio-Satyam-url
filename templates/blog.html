@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+
+
+{% load static %}
+
+{% block content %}
+
+<!-- ================================
+    Start Content
+    ================================= -->
+    <section>
+      <div class="innerPageBannerCol">
+        <div class="container">
+          <div class="row g-4 g-md-3  align-items-center">
+            <div class="col-md-6">
+              <div class="bannerContent">
+                <h1 class="xlTitle pb-md-3">See my recent blogs below</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+    <div class="row">
+        <!-- Blog Entries Column -->
+        <div class="col-md-8 mt-3 left">
+            {% for i in blogpage %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="text-center">
+                   <img src="{{i.image}}" class="rounded" alt="...">
+                         </div>
+                    <h2 class="card-title">{{i.title }}</h2>
+                    <p class="card-text text-muted h6">{{i.author }} | {{i.date}} </p>
+                    <p class="card-text">{{i.content|safe }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+    </section>
+    <!-- ================================
+    End Content
+    ================================= -->
+
+{% endblock %}
